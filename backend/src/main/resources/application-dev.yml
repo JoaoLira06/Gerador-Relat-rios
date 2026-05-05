@@ -1,0 +1,23 @@
+# Profile DEV — PostgreSQL instalado localmente na sua máquina
+# Ativado por padrão (veja application.yml)
+
+spring:
+  datasource:
+    # Formato: jdbc:postgresql://HOST:PORTA/NOME_DO_BANCO
+    url: jdbc:postgresql://localhost:5432/reportdb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      # "update": a JPA atualiza o schema automaticamente baseado nas @Entity
+      # Útil em desenvolvimento — NÃO use em produção (use "validate" ou migrations)
+      ddl-auto: update
+
+# Logs mais detalhados em desenvolvimento
+logging:
+  level:
+    com.empresa.reportgenerator: DEBUG
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG

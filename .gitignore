@@ -1,0 +1,30 @@
+# ===== JAVA / MAVEN =====
+*.class
+*.jar
+*.war
+*.ear
+
+# Pasta de build do Maven
+target/
+
+# Logs do Maven
+*.log
+
+# ===== SPRING BOOT =====
+application-prod.yml
+application-secrets.yml
+
+# ===== IDE =====
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+.kiro/
+
+# ===== NODE / FRONTEND =====
+node_modules/
+
+frontend/dist/
+frontend/build/
+

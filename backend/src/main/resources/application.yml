@@ -1,0 +1,50 @@
+# Configuração base — válida para TODOS os ambientes
+# Cada profile (dev, prod) sobrescreve apenas o que for diferente
+
+spring:
+  application:
+    name: report-generator
+
+  # Ativa o profile "dev" por padrão (PostgreSQL local)
+  # Para trocar: java -jar app.jar --spring.profiles.active=prod
+  profiles:
+    active: dev
+
+  jpa:
+    # Mostra o SQL gerado pela JPA no console (útil para aprender e debugar)
+    show-sql: true
+    properties:
+      hibernate:
+        # Formata o SQL para ficar legível no console
+        format_sql: true
+        # dialect: diz ao Hibernate que estamos usando PostgreSQL
+        # Isso permite usar recursos específicos como JSONB
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  # Configuração do cache em memória (Caffeine)
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=100,expireAfterWrite=10m
+
+# Configurações da nossa aplicação (JWT, limites, etc.)
+app:
+  jwt:
+    # Chave secreta para assinar os tokens JWT
+    # IMPORTANTE: em produção, use uma chave forte e guarde em variável de ambiente!
+    secret: "minha-chave-secreta-super-segura-para-jwt-deve-ter-pelo-menos-256-bits"
+    # Tempo de expiração do token: 24 horas em milissegundos
+    expiration-ms: 86400000
+
+  report:
+    # Limite máximo de registros por requisição (Requirement 8.4)
+    max-records: 50000
+    # Timeout em segundos para geração (Requirement 1.4)
+    timeout-seconds: 30
+
+# Configuração do Swagger UI
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /api-docs
