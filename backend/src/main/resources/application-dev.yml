@@ -6,7 +6,7 @@ spring:
     # Formato: jdbc:postgresql://HOST:PORTA/NOME_DO_BANCO
     url: jdbc:postgresql://localhost:5432/reportdb
     username: postgres
-    password: postgres
+    password: 123456
     driver-class-name: org.postgresql.Driver
 
   jpa:

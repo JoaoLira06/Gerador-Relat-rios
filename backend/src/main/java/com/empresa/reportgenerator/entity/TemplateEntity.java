@@ -4,6 +4,9 @@ import com.empresa.reportgenerator.entity.enums.TemplateType;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 
 @Entity
 @Table(name = "templates")
@@ -29,11 +32,15 @@ public class TemplateEntity {
     @Column(nullable = false, length = 20)
     private TemplateType type;
 
+    @JdbcTypeCode(SqlTypes.JSON)
     @Column(name = "schema_definition", columnDefinition = "jsonb", nullable = false)
     private String schemaDefinition;
 
+
+    @JdbcTypeCode(SqlTypes.JSON)
     @Column(name = "layout_definition", columnDefinition = "jsonb", nullable = false)
     private String layoutDefinition;
+
 
     @Column(name = "created_by", length = 50)
     private String createdBy;

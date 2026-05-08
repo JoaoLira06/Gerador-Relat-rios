@@ -40,6 +40,14 @@ public class TemplateService {
                     .collect(Collectors.toList());
     }
 
+    public List<Template> listTemplates() {
+        return templateRepository.findAll()
+                .stream()
+                .map(templateParser::parse)
+                .collect(Collectors.toList());
+    }
+
+
     public Template createTemplate(CreateTemplateRequest request) {
         if (!templateParser.isValidSchemaJson(request.getSchemaDefinition())) {
             throw new IllegalArgumentException("Schema do template é inválido");

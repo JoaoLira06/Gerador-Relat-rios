@@ -175,6 +175,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Caffeine: implementação de cache em memória de alta performance -->
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+        </dependency>
+
+
     </dependencies>
 
     <build>
