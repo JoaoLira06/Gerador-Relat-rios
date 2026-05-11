@@ -1,18 +1,18 @@
 import React from 'react';
+import { ThemeProvider, CssBaseline } from '@mui/material';
 import { AuthProvider } from './context/AuthContext';
 import AppRouter from './routes/AppRouter';
+import theme from './theme';
 
-/**
- * Componente raiz da aplicação.
- * AuthProvider envolve tudo para que qualquer componente
- * possa acessar o contexto de autenticação.
- */
 const App: React.FC = () => {
-  return (
-    <AuthProvider>
-      <AppRouter />
-    </AuthProvider>
-  );
+    return (
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <AuthProvider>
+                <AppRouter />
+            </AuthProvider>
+        </ThemeProvider>
+    );
 };
 
 export default App;
