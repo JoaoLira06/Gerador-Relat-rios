@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
-import {AuthContextType, AuthenticationResponse} from "../types/auth.types";
+import type {AuthContextType, AuthenticationResponse} from "../types/auth.types";
 import {login as loginApi, logout as logoutApi} from "../api/authApi";
 
 export const AuthContext = createContext<AuthContextType | null>(null);
@@ -13,7 +13,7 @@ export const AuthProvider: React.FC<{children: React.ReactNode}> = ({ children }
         if (savedUSer) {
             setUser(JSON.parse(savedUSer));
         }
-    }, [])};
+    }, []);
 // Função de login
 const login = async (username: string, password: string) => {
     const response = await loginApi({ username, password });
